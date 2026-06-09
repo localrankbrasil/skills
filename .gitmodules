@@ -1,0 +1,30 @@
+[submodule "design-system"]
+	path = design-system
+	url = https://github.com/robonuggets/design-system.git
+[submodule "frontend-slides"]
+	path = frontend-slides
+	url = https://github.com/zarazhangrui/frontend-slides.git
+[submodule "superpowers"]
+	path = superpowers
+	url = https://github.com/obra/superpowers.git
+[submodule "ui-ux-pro-max"]
+	path = ui-ux-pro-max
+	url = https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git
+[submodule "impeccable"]
+	path = impeccable
+	url = https://github.com/pbakaus/impeccable.git
+[submodule "npxskillui"]
+	path = npxskillui
+	url = https://github.com/amaancoderx/npxskillui.git
+[submodule "webgpu-claude-skill"]
+	path = webgpu-claude-skill
+	url = https://github.com/dgreenheck/webgpu-claude-skill.git
+[submodule "awesome-design-md"]
+	path = awesome-design-md
+	url = https://github.com/VoltAgent/awesome-design-md.git
+[submodule "taste-skill"]
+	path = taste-skill
+	url = https://github.com/Leonxlnx/taste-skill.git
+[submodule "playwright-cli"]
+	path = playwright-cli
+	url = https://github.com/microsoft/playwright-cli.git
