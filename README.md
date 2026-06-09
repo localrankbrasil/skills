@@ -1,151 +1,162 @@
-# Skills Repository
+# Skills — Local Rank Brasil
 
-Collection of high-quality, production-ready Claude Code skills.
+Repositório centralizado de skills para o workspace Local Rank Brasil.
 
-## 🎯 Available Skills
-
-### 1. **Landing Page Builder** 🚀
-Create stunning, high-converting landing pages with visual design discovery.
-
-**Features:**
-- 6 aesthetic directions (Minimalist, Maximalist, Retro-Futuristic, Organic, Editorial, Brutalist)
-- 11 essential conversion elements
-- Zero-dependency HTML output
-- Mobile-first responsive design
-- Production-ready examples
-- Comprehensive documentation
-
-**Quick Start:**
-```
-Create a landing page for [your product].
-It does: [description].
-Target: [audience].
-Aesthetic: [style].
-```
-
-**Learn More:** [landing-page-builder/](./landing-page-builder/)
-
----
-
-## 📖 Skill Structure
-
-Each skill directory contains:
+## 📁 Estrutura
 
 ```
-skill-name/
-├── SKILL.md                    ← Main skill definition
-├── GETTING-STARTED.md          ← Quick start guide
-├── README.md                   ← Complete documentation
-├── driver.mjs                  ← Implementation code
-├── examples/                   ← Example files
-└── ...
+skills/
+├── 🟢 LOCAL (Específicas do Opensquad)
+│   ├── opensquad-agent-creator/    # Criador de agents
+│   ├── opensquad-skill-creator/    # Criador de skills
+│   └── template-designer/          # Designer de templates
+│
+├── 🔗 SUBMODULES (Externas - Sincronizadas)
+│   ├── design-system/              (github.com/robonuggets/design-system)
+│   ├── frontend-slides/            (github.com/zarazhangrui/frontend-slides)
+│   ├── superpowers/                (github.com/obra/superpowers)
+│   ├── ui-ux-pro-max/              (github.com/nextlevelbuilder/ui-ux-pro-max-skill)
+│   ├── impeccable/                 (github.com/pbakaus/impeccable)
+│   ├── npxskillui/                 (github.com/amaancoderx/npxskillui)
+│   ├── webgpu-claude-skill/        (github.com/dgreenheck/webgpu-claude-skill)
+│   ├── awesome-design-md/          (github.com/VoltAgent/awesome-design-md)
+│   ├── taste-skill/                (github.com/Leonxlnx/taste-skill)
+│   └── playwright-cli/             (github.com/microsoft/playwright-cli)
+│
+└── .gitmodules                      # Configuração de submodules
 ```
 
----
+## 🔄 Submodules
 
-## 🚀 How to Use These Skills
+Skills externas são gerenciadas como **Git submodules**, mantendo sincronização com os repositórios originais.
 
-### Option 1: Local Use (Recommended)
-
-Copy the skill folder to your `.claude/skills/` directory:
+### Clonar com Submodules
 
 ```bash
-cp -r landing-page-builder ~/.claude/skills/
+git clone --recurse-submodules https://github.com/localrankbrasil/skills.git
 ```
 
-Then use it in Claude Code:
+### Atualizar Submodules
+
+```bash
+# Atualizar todos
+git submodule update --remote
+
+# Atualizar um específico
+git submodule update --remote design-system
 ```
-/landing-page-builder
-Create a landing page for...
+
+### Adicionar Nova Skill External
+
+```bash
+git submodule add https://github.com/user/skill-name.git skill-name
+git commit -m "Add skill-name as submodule"
+git push
 ```
 
-### Option 2: Reference
+## 📝 Skills Locais
 
-Use the skills as reference for building your own.
+### opensquad-agent-creator
+Skill para criar agents automaticamente para Opensquad.
+
+### opensquad-skill-creator
+Skill para criar outras skills.
+
+### template-designer
+Skill para design de templates.
+
+## 🔗 Skills Externas
+
+Cada skill externa é um repositório Git independente. Você pode:
+
+1. **Usar como referência** — Estudar e copiar padrões
+2. **Integrar em projetos** — Usar em squads
+3. **Atualizar do original** — `git submodule update --remote`
+
+## 🚀 Como Usar Skills em Squads
+
+### Referenciar skill local
+
+```yaml
+agents:
+  - name: "Designer"
+    skills:
+      - "skills/template-designer"
+```
+
+### Referenciar skill externa
+
+```yaml
+agents:
+  - name: "Frontend Developer"
+    skills:
+      - "skills/frontend-slides"
+      - "skills/design-system"
+```
+
+## 📦 Sincronização com GitHub
+
+O repositório está sempre sincronizado com:
+- Código local (`opensquad-agent-creator`, etc)
+- Submodules (skills externas)
+
+Commits incluem ambos:
+
+```bash
+# Fazer mudanças em skill local
+cd opensquad-skill-creator/
+# ... editar files ...
+
+# Voltar para root
+cd ..
+
+# Commit
+git add opensquad-skill-creator/
+git commit -m "Update opensquad-skill-creator"
+git push
+```
+
+## 🔍 Listar Skills
+
+```bash
+# Listar todas as skills
+ls -1
+
+# Verificar status dos submodules
+git submodule foreach git status
+```
+
+## 🛠️ Troubleshooting
+
+### "Submodule not found"
+
+```bash
+git submodule update --init --recursive
+```
+
+### Submodule desatualizado
+
+```bash
+git submodule update --remote --merge
+```
+
+### Deletar submodule
+
+```bash
+git submodule deinit -f -- skills/[name]
+git rm -f skills/[name]
+git commit -m "Remove [name] submodule"
+```
+
+## 📚 Referências
+
+| Link | Descrição |
+|---|---|
+| [git-submodule](https://git-scm.com/docs/git-submodule) | Documentação oficial |
+| [Opensquad](../opensquad/README.md) | Framework principal |
+| [CLAUDE.md](../CLAUDE.md) | Instruções do workspace |
 
 ---
 
-## 📚 Documentation
-
-Each skill includes:
-- **SKILL.md** — What it does, how to use it
-- **GETTING-STARTED.md** — 5-minute quick start
-- **README.md** — Complete technical reference
-- **Examples** — Working implementations
-- **Code** — Implementation details
-
----
-
-## 🛠️ Skills Overview
-
-| Skill | Purpose | Status | Files |
-|-------|---------|--------|-------|
-| **Landing Page Builder** | Create high-converting landing pages | ✅ Ready | 16 |
-
----
-
-## 💡 Philosophy
-
-These skills are designed to:
-- ✅ Be production-ready
-- ✅ Include comprehensive documentation
-- ✅ Provide working examples
-- ✅ Support easy customization
-- ✅ Work without external dependencies
-- ✅ Be reusable and shareable
-
----
-
-## 🎓 Learning Resources
-
-Start with any skill's `GETTING-STARTED.md` for a quick introduction.
-
-For deeper knowledge, check:
-- `README.md` — Technical details
-- `SKILL.md` — Feature overview
-- `examples/` — Working implementations
-- Code files — Implementation details
-
----
-
-## 🤝 Contributing
-
-Want to add your own skills? Follow the pattern:
-
-1. Create a folder for your skill
-2. Include comprehensive documentation
-3. Add working examples
-4. Include implementation code
-5. Submit a PR
-
----
-
-## 📞 Support
-
-For each skill, check its documentation:
-- Questions? → See `GETTING-STARTED.md`
-- Technical details? → See `README.md`
-- Examples? → Check the `examples/` folder
-- Code? → Review the implementation files
-
----
-
-## 📄 License
-
-These skills are provided as-is for use with Claude Code.
-
----
-
-**Last Updated:** June 4, 2026
-
----
-
-## 🚀 Getting Started
-
-Pick a skill above and follow its `GETTING-STARTED.md` guide!
-
-All skills are designed to be:
-- ⚡ Fast to get started (5 minutes)
-- 📚 Well-documented
-- 🎨 Production-quality
-- 🔧 Easy to customize
+**Última atualização:** 2026-06-09
+**Repositório:** https://github.com/localrankbrasil/skills
